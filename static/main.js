@@ -28,7 +28,7 @@ const TaskApp = {
             return response
         },
         async getTasks() {
-            const response = await this.sendRequest(window.location + 'get')
+            const response = await this.sendRequest(window.location, 'get')
             this.tasks = await response.json()
         },
         async createTask() {
