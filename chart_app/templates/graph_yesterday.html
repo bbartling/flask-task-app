@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Electrical Load Forecast</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.0/chart.min.js"></script>
+</head>
+
+<canvas id="lineChart" width="900" height="400"></canvas>
+<script>
+    var ctx = document.getElementById("lineChart").getContext("2d");
+    var lineChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: {{ labels | safe }},
+            datasets: [
+                {
+                    label: "Yesterday's Forecasted Electricity Power",
+                    data: {{ values | safe }},
+                    fill : true,
+                    borderColor: "rgb(75,192,192)",
+                    lineTension: 0.6
+                },
+                {
+                    label: "Yesterday's Actual Electricity Power",
+                    data: {{ values2 | safe }},
+                    fill : true,
+                    borderColor: "rgb(141, 36, 201)",
+                    lineTension: 0.6
+                },                
+            ]
+    },
+    options: {
+        responsive: true
+    }
+});
+</script>
+
+</body>
+
+</html>
